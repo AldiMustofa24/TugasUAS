@@ -1,0 +1,146 @@
+<?php
+session_start();
+if (!isset($_SESSION['nama'])) {
+  header("Location: login.php");
+  exit();
+}
+?>
+<!DOCTYPE php>
+<php lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beranda | Vita Clinic</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- AOS (Animate on Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+    }
+  </style>
+</head>
+
+<body class="text-gray-800">
+
+   <!-- Header -->
+   <header class="bg-teal-700 text-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <!-- Logo -->
+      <div class="flex items-center space-x-4">
+        <img src="img/logo.png" alt="Logo Vita Clinic" class="w-20 h-20 object-contain" />
+        <h1 class="text-2xl font-bold">Vita Clinic</h1>
+      </div>
+      <!-- Navigasi -->
+      <nav class="hidden md:flex space-x-6">
+        <a href="index.php" class="relative group">
+          <span>Beranda</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="artikel.php" class="relative group">
+          <span>Artikel Kesehatan</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="obat.php" class="relative group">
+          <span>Obat & Suplemen</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="tentang.php" class="relative group">
+          <span>Tentang Kami</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="riwayat.php" class="relative group">
+          <span>Riwayat</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="logout.php" class="bg-white text-teal-700 px-3 py-1 rounded hover:bg-gray-100 transition">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- Hero Section -->
+  <section class="text-center py-12">
+    <div class="container mx-auto px-6 max-w-3xl">
+      <h2 class="text-3xl font-bold text-teal-800 mb-4">Artikel Kesehatan Terbaru</h2>
+      <p class="text-gray-600">Informasi kesehatan yang telah ditinjau oleh dokter dan pakar medis.</p>
+    </div>
+  </section>
+
+  <!-- Grid Artikel -->
+  <section class="py-10 bg-white">
+    <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Artikel Diabetes Type 2 -->
+      <article class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transform hover:-translate-y-1 transition duration-200">
+        <img src="img/diabetes.jpg" alt="Diabetes" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Kenali Gejala Awal Diabetes Tipe 2</h3>
+          <p class="text-gray-700 mb-4">Diabetes tipe 2 sering berkembang tanpa gejala yang jelas. Kenali tanda‑tandanya sedini mungkin untuk mencegah komplikasi.</p>
+          </div>
+      </article>
+
+      <!-- Artikel Kebiasaan Sehat -->
+      <article class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transform hover:-translate-y-1 transition duration-200">
+        <img src="img/hidup-sehat.jpg" alt="Hidup Sehat" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">7 Kebiasaan Sehat untuk Umur Panjang</h3>
+          <p class="text-gray-700 mb-4">Pola makan sehat, tidur cukup, dan olahraga teratur terbukti meningkatkan kualitas hidup dan memperpanjang usia.</p>
+          </div>
+      </article>
+
+      <!-- Artikel Stres & Mental Health -->
+      <article class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transform hover:-translate-y-1 transition duration-200">
+        <img src="img/stres.jpg" alt="Stres dan Kesehatan Mental" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Stres dan Dampaknya terhadap Kesehatan Mental</h3>
+          <p class="text-gray-700 mb-4">Stres kronis bisa memicu kecemasan dan depresi. Pelajari cara mengelola stres yang efektif.</p>
+          </div>
+      </article>
+
+      <!-- Artikel Nutrisi & Diabetes Remisi -->
+      <article class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transform hover:-translate-y-1 transition duration-200">
+        <img src="img/nutrisi.jpg" alt="Nutrisi Diabetes" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Nutrisi dalam Remisi Diabetes Tipe 2</h3>
+          <p class="text-gray-700 mb-4">Terapi makanan dan diet rendah karbohidrat melalui telemedicine menunjukkan hasil remisi yang baik. </p>
+          </div>
+      </article>
+
+      <!-- Artikel Kalium & Mikrobioma -->
+      <article class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transform hover:-translate-y-1 transition duration-200">
+        <img src="img/calcium-diet.jpg" alt="Diet Kalsium" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Peran Kalsium dalam Risiko Diabetes</h3>
+          <p class="text-gray-700 mb-4">Konsumsi kalsium harian ~750 mg dapat menurunkan risiko T2D hingga 18 % menurut meta‑analisis besar. </p>
+          </div>
+      </article>
+
+      <!-- Artikel Diet Mediterania -->
+      <article class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transform hover:-translate-y-1 transition duration-200">
+        <img src="img/mediteranian.jpg" alt="Diet Mediterania" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Mediterranean Diet & Risiko Diabetes</h3>
+          <p class="text-gray-700 mb-4">Diet Mediterania kerap dikaitkan dengan penurunan kadar gula darah dan risiko diabetes—terbukti melalui berbagai </p>
+          </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-teal-900 text-white text-center py-6 mt-10">
+  <p>&copy; TEKNIK INFORMATIKA, UNIVERSITAS PUTERA BATAM 2025</p>
+  </footer>
+
+</body>
+</php>

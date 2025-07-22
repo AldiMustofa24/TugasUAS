@@ -1,0 +1,130 @@
+<?php
+session_start();
+if (!isset($_SESSION['nama'])) {
+  header("Location: login.php");
+  exit();
+}
+?>
+<!DOCTYPE php>
+<php lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beranda | Vita Clinic</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- AOS (Animate on Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+    }
+  </style>
+</head>
+
+<body class="text-gray-800">
+
+   <!-- Header -->
+   <header class="bg-teal-700 text-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <!-- Logo -->
+      <div class="flex items-center space-x-4">
+        <img src="../img/logo.png" alt="Logo Vita Clinic" class="w-20 h-20 object-contain" />
+        <h1 class="text-2xl font-bold">Vita Clinic</h1>
+      </div>
+      <!-- Navigasi -->
+      <nav class="hidden md:flex space-x-6">
+        <a href="index.php" class="relative group">
+          <span>Beranda</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="artikel.php" class="relative group">
+          <span>Artikel Kesehatan</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="obat.php" class="relative group">
+          <span>Obat & Suplemen</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="konsultasi.php" class="relative group ">
+          <span>Konsultasi Dokter</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="tentang.php" class="relative group">
+          <span>Tentang Kami</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="logout.php" class="bg-white text-teal-700 px-3 py-1 rounded hover:bg-gray-100 transition">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="text-center py-20 bg-gradient-to-b from-teal-50 to-white" data-aos="fade-up">
+    <div class="container mx-auto px-6">
+      <h1 class="text-4xl md:text-5xl font-bold text-teal-800 mb-4">Selamat Datang di Vita Clinic</h1>
+      <p class="text-lg md:text-xl text-gray-600">Mitra kesehatan digital terpercaya Anda.</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16 bg-white" data-aos="fade-up">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <h2 class="text-3xl font-bold text-teal-800 mb-6">Tentang Vita Clinic</h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        <strong>Vita Clinic</strong> adalah platform layanan kesehatan digital yang menyediakan informasi medis, konsultasi dengan dokter, serta panduan pengobatan terpercaya. Kami hadir untuk membantu masyarakat Indonesia dalam mengakses informasi dan layanan kesehatan secara cepat dan aman.
+      </p>
+
+      <h3 class="text-2xl font-semibold text-teal-700 mb-3">Misi Kami</h3>
+      <ul class="list-disc list-inside text-gray-700 space-y-2 mb-6">
+        <li>Memberikan akses informasi kesehatan yang akurat dan terkini.</li>
+        <li>Menyediakan layanan konsultasi medis secara online.</li>
+        <li>Menjadi jembatan antara pasien dan tenaga medis profesional.</li>
+      </ul>
+
+      <h3 class="text-2xl font-semibold text-teal-700 mb-3">Tim Kami</h3>
+      <p class="text-gray-700 leading-relaxed">
+        Tim Vita Clinic terdiri dari dokter umum, spesialis, apoteker, dan pengembang teknologi yang bekerja sama demi meningkatkan kualitas layanan kesehatan digital.
+      </p>
+    </div>
+  </section>
+  <!-- Lokasi & Gambar Rumah Sakit -->
+  <section class="py-16 bg-teal-50" data-aos="fade-up">
+    <div class="container mx-auto px-6 max-w-5xl text-center">
+      <h2 class="text-3xl font-bold text-teal-800 mb-6">Lokasi Vita Clinic</h2>
+
+      <!-- Gambar Rumah Sakit -->
+      <img src="../img/RS vita.jpg" alt="Gedung Vita Clinic" class="w-full max-w-3xl mx-auto rounded-2xl shadow-lg mb-8" />
+
+      <!-- Google Maps Embed -->
+      <div class="aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden shadow-md">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d249.31761569056727!2d104.05484350780334!3d1.1008929054323153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1751173718682!5m2!1sid!2sid"
+          width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-teal-900 text-white text-center py-6 mt-10">
+  <p>&copy; TEKNIK INFORMATIKA, UNIVERSITAS PUTERA BATAM 2025</p>
+  </footer>
+
+  <!-- Init AOS -->
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+</body>
+</php>

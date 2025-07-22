@@ -1,0 +1,305 @@
+<?php
+session_start();
+if (!isset($_SESSION['nama'])) {
+  header("Location: login.php");
+  exit();
+}
+?>
+<!DOCTYPE php>
+<php lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beranda | Vita Clinic</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- AOS (Animate on Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+    }
+  </style>
+</head>
+
+<body class="text-gray-800">
+
+   <!-- Header -->
+   <header class="bg-teal-700 text-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <!-- Logo -->
+      <div class="flex items-center space-x-4">
+        <img src="../img/logo.png" alt="Logo Vita Clinic" class="w-20 h-20 object-contain" />
+        <h1 class="text-2xl font-bold">Vita Clinic</h1>
+      </div>
+      <!-- Info User -->
+      <div class="hidden md:flex items-center space-x-4 text-white font-semibold">
+        👤 <?php echo $_SESSION['nama']; ?> (<?php echo ucfirst($_SESSION['role']); ?>)
+      </div>
+      <!-- Navigasi -->
+      <nav class="hidden md:flex space-x-6">
+        <a href="index.php" class="relative group">
+          <span>Beranda</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="artikel.php" class="relative group">
+          <span>Artikel Kesehatan</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="obat.php" class="relative group">
+          <span>Obat & Suplemen</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="konsultasi.php" class="relative group ">
+          <span>Konsultasi Dokter</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="tentang.php" class="relative group">
+          <span>Tentang Kami</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="logout.php" class="bg-white text-teal-700 px-3 py-1 rounded hover:bg-gray-100 transition">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section (modifikasi seperti Alodokter) -->
+  <section class="bg-teal-700 text-white py-20 relative overflow-hidden">
+    <div class="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center justify-between">
+      
+      <!-- Teks di kiri -->
+      <div class="md:w-1/2 text-center md:text-left z-10" data-aos="fade-right">
+        <h2 class="text-4xl font-bold mb-4">Selamat Datang di Vita Clinic</h2>
+        <p class="text-lg mb-6">Platform kesehatan terpercaya untuk informasi, konsultasi, dan layanan medis.</p>
+        <a href="konsultasi.php" class="bg-white text-teal-700 px-6 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition">
+          Mulai Konsultasi
+        </a>
+      </div>
+
+      <!-- Gambar dokter di kanan -->
+      <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-left">
+        <img src="../img/dokter-hero.png" alt="Dokter Vita Clinic" class="w-full max-w-sm mx-auto drop-shadow-xl">
+      </div>
+
+    </div>
+
+    <!-- Elemen dekoratif background -->
+    <div class="absolute right-0 bottom-0 w-96 h-96 bg-white opacity-10 rounded-full blur-3xl z-0"></div>
+  </section>
+
+  <!-- Fitur Utama -->
+  <section class="py-16 bg-white" data-aos="fade-up">
+    <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8">
+      <div class="bg-gray-100 rounded-xl shadow p-6 hover:shadow-lg transition">
+        <h3 class="text-xl font-bold text-teal-700 mb-2">Artikel Kesehatan</h3>
+        <p><a href="artikel.php" class="text-purple-700 hover:underline">Baca informasi medis terbaru »</a></p>
+      </div>
+      <div class="bg-gray-100 rounded-xl shadow p-6 hover:shadow-lg transition">
+        <h3 class="text-xl font-bold text-teal-700 mb-2">Obat & Suplemen</h3>
+        <p><a href="obat.php" class="text-purple-700 hover:underline">Pelajari tentang obat & suplemen »</a></p>
+    </div>
+    </div>
+  </section>
+
+  <!-- Testimoni Pasien -->
+  <section class="bg-gray-50 py-16" data-aos="fade-up">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-semibold text-teal-700 mb-8">Apa Kata Pasien Kami?</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition">
+          <p class="italic">“Pelayanan konsultasinya sangat cepat dan dokter ramah. Saya merasa aman berkonsultasi dari rumah.”</p>
+          <p class="font-semibold mt-4">- Andi, 27 Tahun</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition">
+          <p class="italic">“Websitenya mudah digunakan, saya bisa langsung tahu obat yang cocok untuk gejala saya.”</p>
+          <p class="font-semibold mt-4">- Sinta, 33 Tahun</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- Dokter -->
+<section class="container mx-auto px-6 py-16">
+  <h3 class="text-2xl font-bold text-center text-teal-700 mb-8">Dokter Tersedia</h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+    
+    <!-- Dokter 1 -->
+    <div onclick="bukaProfil(
+      'dr. Tomi Gea, Sp.PD',
+      'Spesialis Penyakit Dalam',
+      '../img/dr_Tomi.jpg',
+      `<div class='text-left space-y-2 text-sm text-gray-700'>
+        <p><strong>Pengalaman:</strong> 12 tahun</p>
+        <p><strong>Rating Pasien:</strong> 92.3%</p>
+        <p><strong>Tarif Konsultasi:</strong> Rp. - </p>
+        <p><strong>Alumnus:</strong><br>Universitas Gadjah Mada, 2009<br>Universitas Indonesia, 2004</p>
+        <p><strong>Praktik di:</strong><br>RS Vita Clinic, Batam</p>
+        <p><strong>Nomor STR:</strong><br>3122051501120031</p>
+      </div>`
+    )" 
+    class="bg-white rounded-xl shadow-md overflow-hidden text-center p-4 cursor-pointer hover:shadow-xl transition">
+      <img src="../img/dr_Tomi.jpg" alt="dr. Tomi" class="w-24 h-24 mx-auto rounded-full object-cover mb-4">
+      <h4 class="text-lg font-semibold">dr. Tomi Gea, Sp.PD</h4>
+      <p class="text-sm text-gray-500">Spesialis Penyakit Dalam</p>
+    </div>
+
+    <!-- Dokter 2 -->
+    <div onclick="bukaProfil(
+      'dr. Ahamad Alfajri , Sp.KJ',
+      'Spesialis Kejiwaan',
+      '../img/dr_alfajri.jpg',
+      `<div class='text-left space-y-2 text-sm text-gray-700'>
+        <p><strong>Pengalaman:</strong> 9 tahun</p>
+        <p><strong>Rating Pasien:</strong> 89.5%</p>
+        <p><strong>Tarif Konsultasi:</strong> Rp. - </p>
+        <p><strong>Alumnus:</strong><br>Universitas Airlangga, 2012</p>
+        <p><strong>Praktik di:</strong><br>RS Jiwa Vita Clinic, Batam</p>
+        <p><strong>Nomor STR:</strong><br>3191100921040304</p>
+      </div>`
+    )" 
+    class="bg-white rounded-xl shadow-md overflow-hidden text-center p-4 cursor-pointer hover:shadow-xl transition">
+      <img src="../img/dr_alfajri.jpg" alt="dr. Alfajri" class="w-24 h-24 mx-auto rounded-full object-cover mb-4">
+      <h4 class="text-lg font-semibold">dr. Ahamad Alfajri, Sp.KJ</h4>
+      <p class="text-sm text-gray-500">Spesialis Kejiwaan</p>
+    </div>
+
+    <!-- Dokter 3 -->
+    <div onclick="bukaProfil(
+      'dr. Aldi Mustofa, Sp.THT',
+      'Spesialis THT',
+      '../img/dr_aldi.jpg',
+      `<div class='text-left space-y-2 text-sm text-gray-700'>
+        <p><strong>Pengalaman:</strong> 8 tahun</p>
+        <p><strong>Rating Pasien:</strong> 90.1%</p>
+        <p><strong>Tarif Konsultasi:</strong> Rp. - </p>
+        <p><strong>Alumnus:</strong><br>Universitas Hasanuddin, 2013</p>
+        <p><strong>Praktik di:</strong><br>RS Vita Clinic, Batam</p>
+        <p><strong>Nomor STR:</strong><br>3133092104070505</p>
+      </div>`
+    )" 
+    class="bg-white rounded-xl shadow-md overflow-hidden text-center p-4 cursor-pointer hover:shadow-xl transition">
+      <img src="../img/dr_aldi.jpg" alt="dr. Aldi" class="w-24 h-24 mx-auto rounded-full object-cover mb-4">
+      <h4 class="text-lg font-semibold">dr. Aldi Mustofa, Sp.THT</h4>
+      <p class="text-sm text-gray-500">Spesialis THT</p>
+    </div>
+
+    <!-- Dokter 4 -->
+    <div onclick="bukaProfil(
+      'dr. Afta Rizky, MARS',
+      'Dokter Umum',
+      '../img/dr_afta.jpg',
+      `<div class='text-left space-y-2 text-sm text-gray-700'>
+        <p><strong>Pengalaman:</strong> 20 tahun</p>
+        <p><strong>Rating Pasien:</strong> 99.8%</p>
+        <p><strong>Tarif Konsultasi:</strong> Rp. - </p>
+        <p><strong>Alumnus:</strong><br>Universitas Trisakti, 2014<br>Universitas Gadjah Mada, 2009<br>Universitas Indonesia, 2004</p>
+        <p><strong>Praktik di:</strong><br>Vita Clinic, Batam</p>
+        <p><strong>Nomor STR:</strong><br>3107081201101032</p>
+      </div>`
+    )" 
+    class="bg-white rounded-xl shadow-md overflow-hidden text-center p-4 cursor-pointer hover:shadow-xl transition">
+      <img src="../img/dr_afta.jpg" alt="dr. Afta" class="w-24 h-24 mx-auto rounded-full object-cover mb-4">
+      <h4 class="text-lg font-semibold">dr. Afta Rizky, MARS</h4>
+      <p class="text-sm text-gray-500">Dokter Umum</p>
+    </div>
+
+    <!-- Dokter 5 -->
+    <div onclick="bukaProfil(
+      'dr. Charles , Sp.OG',
+      'Spesialis Kandungan',
+      '../img/dr_charles.jpg',
+      `<div class='text-left space-y-2 text-sm text-gray-700'>
+        <p><strong>Pengalaman:</strong> 14 tahun</p>
+        <p><strong>Rating Pasien:</strong> 94.7%</p>
+        <p><strong>Tarif Konsultasi:</strong> Rp. - </p>
+        <p><strong>Alumnus:</strong><br>Universitas Udayana, 2007</p>
+        <p><strong>Praktik di:</strong><br>RS Vita Clinic, Batam</p>
+        <p><strong>Nomor STR:</strong><br>3106092103040019</p>
+      </div>`
+    )" 
+    class="bg-white rounded-xl shadow-md overflow-hidden text-center p-4 cursor-pointer hover:shadow-xl transition">
+      <img src="../img/dr_charles.jpg" alt="dr. Charles" class="w-24 h-24 mx-auto rounded-full object-cover mb-4">
+      <h4 class="text-lg font-semibold">dr. Charles , Sp.OG</h4>
+      <p class="text-sm text-gray-500">Spesialis Kandungan</p>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- Modal Dokter -->
+<div id="modalDokter" class="fixed inset-0 bg-black bg-opacity-50 justify-center items-center hidden z-50">
+  <div id="isiModal" class="bg-white rounded-lg p-6 max-w-md w-full">
+    <!-- Konten dinamis dari JS akan masuk ke sini -->
+  </div>
+</div>
+  
+  <!-- Partner RS -->
+  <section class="bg-white py-20" data-aos="fade-up">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-teal-700 mb-12 tracking-wide">Partner Rumah Sakit</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition duration-300">
+          <img src="../img/RS AwalBros Batam.jpg" class="w-full h-32 object-cover" />
+          <p class="p-4 text-teal-800 font-semibold">RS AwalBros Batam</p>
+        </div>
+        <div class="bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition duration-300">
+          <img src="../img/RS BP BATAM.jpg" class="w-full h-32 object-cover" />
+          <p class="p-4 text-teal-800 font-semibold">RS BP Batam</p>
+        </div>
+        <div class="bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition duration-300">
+          <img src="../img/RS HARAPAN BUNDA.jpeg" class="w-full h-32 object-cover" />
+          <p class="p-4 text-teal-800 font-semibold">RS Harapan Bunda</p>
+        </div>
+        <div class="bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition duration-300">
+          <img src="../img/RS SANTA ELISABETH BATAM KOTA.jpg" class="w-full h-32 object-cover" />
+          <p class="p-4 text-teal-800 font-semibold">RS Santa Elisabeth</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-teal-900 text-white text-center py-6">
+  <p>&copy; TEKNIK INFORMATIKA, UNIVERSITAS PUTERA BATAM 2025</p>
+  </footer>
+
+  <!-- Init AOS -->
+  <script>
+    AOS.init();
+  
+    function bukaProfil(nama, spesialis, foto, deskripsiHTML) {
+      const modal = document.getElementById("modalDokter");
+      const isi = document.getElementById("isiModal");
+  
+      isi.innerHTML = `
+        <div class="bg-white rounded-lg p-6 max-w-md w-full text-center">
+          <img src="${foto}" alt="${nama}" class="w-24 h-24 mx-auto rounded-full object-cover mb-4 border-4 border-teal-500">
+          <h3 class="text-xl font-bold text-teal-700 mb-1">${nama}</h3>
+          <p class="text-sm text-gray-500 mb-4">${spesialis}</p>
+          ${deskripsiHTML}
+          <button onclick="tutupModal()" class="mt-6 bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 transition">Tutup</button>
+        </div>
+      `;
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+  
+    function tutupModal() {
+      const modal = document.getElementById("modalDokter");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+  </script>
+  
+
+</body>
+</html>
